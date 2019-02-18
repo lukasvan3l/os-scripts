@@ -1,0 +1,47 @@
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/lukas/Software/google-cloud-sdk/path.bash.inc ]; then
+  source '/Users/lukas/Software/google-cloud-sdk/path.bash.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/lukas/Software/google-cloud-sdk/completion.bash.inc ]; then
+  source '/Users/lukas/Software/google-cloud-sdk/completion.bash.inc'
+fi
+
+
+# server alias
+alias server="python -m SimpleHTTPServer"
+alias killjava="pkill -9 java"
+
+# Add git from brew instead of xcode
+export PATH=/usr/local/Cellar/git/2.4.0/bin:$PATH
+
+# enable all logs from npm-debug
+export DEBUG=eon:*
+
+export JAVA_HOME='/Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home'
+
+# kleurtjes voor folders en executables, jeej!
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+# Git branch in prompt.
+parse_git_branch() {
+   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# console coloring
+export PS1="\[\033[1;34m\]\!\[\033[0m\] \[\033[1;35m\]😀  \[\033[0m\]\[\033[1;35m\]\w\[\033[0m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+export NVM_DIR="/Users/lukas/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$HOME/Software/apache-maven-3.5.2/bin:$PATH"
+
+export METEOR_PACKAGE_DIRS="$HOME/projects/meteor-packages"
+
+# if [ -f $(brew — prefix)/etc/bash_completion ]; then
+# . $(brew — prefix)/etc/bash_completion
+# fi
