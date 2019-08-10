@@ -12,7 +12,8 @@ do
 done
 npm list -g --depth=0
 
-pip install --upgrade pip
+pip3 list -o --format columns|  cut -d' ' -f1|xargs -n1 pip install -U
+pip3 list --outdated --format=columns
 
 gcloud components update
 
